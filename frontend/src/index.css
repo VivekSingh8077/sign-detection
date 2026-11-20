@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@tailwind base; @tailwind components; @tailwind utilities;
+body { @apply font-sans text-slate-200 antialiased; background: radial-gradient(900px 500px at 80% -10%, #2a1d6b55, transparent), radial-gradient(700px 400px at 0% 0%, #1d3a8a44, transparent), #070a17; min-height: 100vh; }
+@layer components {
+  .glass { @apply rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-xl shadow-xl shadow-black/30 transition-colors; }
+  .glass:hover { @apply border-white/20; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition disabled:opacity-40 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-gradient-to-r from-brand to-brand-blue text-white hover:brightness-110; }
+  .btn-ghost { @apply btn border border-white/10 bg-white/5 hover:bg-white/10; }
+}
