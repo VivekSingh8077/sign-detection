@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { WS_URL } from "../services/api";
 import { addHistory } from "../services/history";
-import { gestureName } from "../gestures";
+import { gestureLabel } from "../gestures";
 import type { Connection, InferenceResult, Settings } from "../types";
 
 const SEND_INTERVAL = 120; // ms between frames sent to the backend
@@ -28,7 +28,7 @@ export function useRecognizer(settings: Settings) {
     // Accept after N stable frames; the same gesture repeats only after the hand leaves or the gesture changes.
     if (streak.current.n >= cfg.current.stableFrames && lastAccepted.current !== r.label) {
       lastAccepted.current = r.label;
-      setText((t) => [...t, gestureName(r.label!)]);
+      setText((t) => [...t, gestureLabel(r.label!)]);
       addHistory(r.label, r.confidence);
     }
   }, []);

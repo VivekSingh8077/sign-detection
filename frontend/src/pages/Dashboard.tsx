@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Play } from "lucide-react";
 import { Card, Dot, Page, Stat } from "../components/Ui";
-import { GESTURES, gestureName } from "../gestures";
+import { GESTURES, gestureLabel } from "../gestures";
 import { getHealth } from "../services/api";
 import { useHistory } from "../services/history";
 export default function Dashboard() {
@@ -19,7 +19,7 @@ export default function Dashboard() {
       </div>
       <Card><h2 className="mb-3 font-medium">Recent gestures</h2>
         {history.length === 0 ? <p className="text-sm text-slate-400">Nothing yet. Start a live session.</p> :
-          <div className="flex flex-wrap gap-2">{history.slice(0, 8).map((h) => <span key={h.id} className="rounded-full bg-white/10 px-3 py-1 text-sm">{gestureName(h.label)} · {(h.confidence * 100).toFixed(0)}%</span>)}</div>}
+          <div className="flex flex-wrap gap-2">{history.slice(0, 8).map((h) => <span key={h.id} className="rounded-full bg-white/10 px-3 py-1 text-sm">{gestureLabel(h.label)} · {(h.confidence * 100).toFixed(0)}%</span>)}</div>}
       </Card>
       <div className="grid gap-4 sm:grid-cols-3">
         {[["/gestures", "Gesture Library"], ["/history", "Recognition History"], ["/about", "About the Project"]].map(([to, l]) =>
